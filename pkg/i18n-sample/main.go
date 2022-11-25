@@ -31,7 +31,7 @@ func main() {
 	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
 	// No need to load active.en.toml since we are providing default translations.
 	// bundle.MustLoadMessageFile("active.en.toml")
-	bundle.MustLoadMessageFile("active.es.toml")
+	bundle.MustLoadMessageFile("../../resources/i18n/active.es.toml")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		lang := r.FormValue("lang")

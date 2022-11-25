@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "pkg/web/i18n/main.go"
+            "program": "pkg/i18n-sample/main.go"
         }
     ]
 }
