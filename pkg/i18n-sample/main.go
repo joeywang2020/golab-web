@@ -11,6 +11,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
+	u "wade.lab/pkg/util"
 )
 
 var page = template.Must(template.New("").Parse(`
