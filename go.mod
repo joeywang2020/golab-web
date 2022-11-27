@@ -1,4 +1,4 @@
-module wade/lab/web
+module wade.lab
 
 go 1.18
 

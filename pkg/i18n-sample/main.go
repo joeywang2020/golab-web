@@ -33,6 +33,7 @@ func init() {
 	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
 	// No need to load active.en.toml since we are providing default translations.
 	// bundle.MustLoadMessageFile("active.en.toml")
+	bundle.MustLoadMessageFile("../../resources/i18n/active.en.toml")
 	bundle.MustLoadMessageFile("../../resources/i18n/active.es.toml")
 	// bundle.MustLoadMessageFile("../../resources/i18n/active.zh-CN.toml")
 	bundle.LoadMessageFile("../../resources/i18n/active.zh.toml")
@@ -50,18 +51,8 @@ func i18Hello(w http.ResponseWriter, r *http.Request) {
 	accept := r.Header.Get("Accept-Language")
 	localizer := i18n.NewLocalizer(bundle, accept)
 
-	name := r.FormValue("name")
-	if name == "" {
-		name = "Bob"
-	}
-
 	// unreadEmailCount, _ := strconv.ParseInt(r.FormValue("unreadEmailCount"), 10, 64)
-	helloPerson := localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "HelloPerson",
-			Other: "Hello {{.Name}}",
-		},
-	})
+	helloPerson := u.Localize(localizer, "HelloPerson")
 
 	res := []byte(helloPerson)
 	w.Write(res)
