@@ -50,10 +50,9 @@ func main() {
 
 func i18Hello(w http.ResponseWriter, r *http.Request) {
 	accept := r.Header.Get("Accept-Language")
-	localizer := i18n.NewLocalizer(bundle, accept)
 
 	// unreadEmailCount, _ := strconv.ParseInt(r.FormValue("unreadEmailCount"), 10, 64)
-	helloPerson := u.Localize(localizer, "HelloPerson")
+	helloPerson := u.Localize(accept, "HelloPerson")
 
 	res := []byte(helloPerson)
 	w.Write(res)
