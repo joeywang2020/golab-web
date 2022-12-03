@@ -1,4 +1,4 @@
-HelloPerson = "你好 {{.Name}}"
+Hello = "你好 {{.Name}}"
 
 [MyUnreadEmails]
 description = "zh我的未读邮件数量"

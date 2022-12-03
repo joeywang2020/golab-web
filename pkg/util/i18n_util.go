@@ -26,7 +26,7 @@ func init() {
 	bundle.LoadMessageFile(i18n_resource_folder + "active.zh.toml")
 }
 
-func Localize(lang, id string) string {
+func SimpleLocalize(lang, id string) string {
 	localizer := i18n.NewLocalizer(bundle, lang)
 	localizedTxt, err := localizer.Localize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
@@ -34,6 +34,14 @@ func Localize(lang, id string) string {
 		},
 	})
 	_ = fmt.Errorf("Localize lang %v, id:%v, err: %+v", lang, id, err)
+	return localizedTxt
+}
+
+func Localize(lang string, lc *i18n.LocalizeConfig) string {
+	localizer := i18n.NewLocalizer(bundle, lang)
+	localizedTxt, err := localizer.Localize(lc)
+
+	_ = fmt.Errorf("Localize lang %v, id:%v, err: %+v", lang, lc.MessageID, err)
 	return localizedTxt
 }
 

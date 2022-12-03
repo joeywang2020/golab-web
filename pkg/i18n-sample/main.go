@@ -42,17 +42,17 @@ func init() {
 
 func main() {
 	http.HandleFunc("/", i18n_sample)
-	http.HandleFunc("/i18Hello", i18Hello)
+	http.HandleFunc("/helloI18n", helloI18n)
 
 	fmt.Println("Listening on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-func i18Hello(w http.ResponseWriter, r *http.Request) {
+func helloI18n(w http.ResponseWriter, r *http.Request) {
 	accept := r.Header.Get("Accept-Language")
 
 	// unreadEmailCount, _ := strconv.ParseInt(r.FormValue("unreadEmailCount"), 10, 64)
-	helloPerson := u.Localize(accept, "HelloPerson")
+	helloPerson := u.SimpleLocalize(accept, "Hello")
 
 	res := []byte(helloPerson)
 	w.Write(res)
